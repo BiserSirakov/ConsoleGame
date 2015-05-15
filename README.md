@@ -56,7 +56,7 @@
 <br>return 0;
 <br>}</p>
 <p><strong>Абсолютното следване на структурата на кода и примерните стойности, описани в отделните точки не е задължително. За някой от характеристиките (например health и defense на Creature) трябва да измислите собствени стойности. Допълнително в играта могат да бъдат добавени магии, които могат да изпълняват единиците. Проявата на творчество ще бъде оценена подобаващо.</strong></p>
-<img src=""
+<img src="https://raw.githubusercontent.com/BiserSirakov/ConsoleGame/master/image.png">
 <p>Reference: Heroes of Might and Magic</p>
 
 
