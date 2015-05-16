@@ -13,7 +13,8 @@
         public Game() 
         {
             this.shopkeeper = new Shop();
-            // Add units to player and enemy, which can be purchased and their price
+            this.player = new Player();
+            this.enemy = new Player();
         }
 
         public void Start()
@@ -23,21 +24,98 @@
 
         public void VisitShop()
         {
-            // TODO: the shop visit
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("1. List of the available units and their prices");
+            Console.WriteLine("2. Buy");
+            Console.WriteLine("3. Available gold");
+            Console.WriteLine("4. Back to main menu");
+            Console.WriteLine("-----------------------------");
+            Console.Write("Type here: ");
+            var input = Console.ReadLine();
+            ExecuteShopMenu(input);
         }
 
         public void Exit()
         {
-            // TODO: the exit
+            Environment.Exit(0);
         }
 
         public void Menu()
         {
-            // TODO: the menu
+            Console.WriteLine(Environment.NewLine + "Welcome to the Console Game !");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("1. Start");
+            Console.WriteLine("2. Visit the Shop");
+            Console.WriteLine("3. Exit");
+            Console.WriteLine("-----------------------------");
+            Console.Write("Type here: ");
+            var input = Console.ReadLine();
+            ExecuteMainInput(input);
+        }
+
+        public void ExecuteMainInput(string input)
+        {
+            switch (input)
+            {
+                case "1": Start();
+                    break;
+                case "2": VisitShop();
+                    break;
+                case "3": Exit();
+                    break;
+                default: Console.WriteLine("\nWrong input!\n");
+                    Menu();
+                    break;
+            }
+        }
+
+        public void ExecuteShopMenu(string input)
+        {
+            switch (input)
+            {
+                case "1":
+                    Console.WriteLine("-----------------------------");
+                    Console.WriteLine("Peasant - 30g");
+                    Console.WriteLine("Footman - 90g");
+                    Console.WriteLine("Archer - 50g");
+                    Console.WriteLine("Griffon - 150g");
+                    Console.WriteLine("-----------------------------");
+                    GoBackToShop();
+                    break;
+                case "2": 
+                    break;
+                case "3":
+                    Console.WriteLine("-----------------------------");
+                    Console.WriteLine("Your gold: " + player.Gold);
+                    Console.WriteLine("-----------------------------");
+                    GoBackToShop();
+                    break;
+                case "4": Menu();
+                    break;
+                default: Console.WriteLine("\nWrong input!\n");
+                    VisitShop();
+                    break;
+            }
+        }
+
+        private void GoBackToShop()
+        {
+            Console.Write("Back ? yes/no: ");
+            var input = Console.ReadLine();
+            
+            if (input == "yes")
+            {
+                VisitShop();
+            }
+            else
+            {
+                Exit();
+            }
         }
 
         public void Run()
         {
+            Menu();
             // Testing the different parts here
             //Player player1 = new Player();
 
@@ -52,8 +130,7 @@
             //player1.ListUnits();
             //Console.WriteLine();
             //Console.WriteLine("gold: " + player1.Gold);
-            Console.Write("Type here: ");
-            var commandLine = Console.ReadLine().Split(' ');
+            
         }
     }
 }
