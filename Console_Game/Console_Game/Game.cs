@@ -10,7 +10,7 @@
         private Player enemy;
         private Shop shopkeeper;
 
-        public Game() 
+        public Game()
         {
             this.shopkeeper = new Shop();
             this.player = new Player();
@@ -42,7 +42,7 @@
 
         public void Menu()
         {
-            Console.WriteLine(Environment.NewLine + "Welcome to the Console Game !");
+            Console.WriteLine("Welcome to the Console Game !");
             Console.WriteLine("-----------------------------");
             Console.WriteLine("1. Start");
             Console.WriteLine("2. Visit the Shop");
@@ -57,13 +57,20 @@
         {
             switch (input)
             {
-                case "1": Start();
+                case "1":
+                    Start();
                     break;
-                case "2": VisitShop();
+                case "2":
+                    Console.Clear();
+                    VisitShop();
                     break;
-                case "3": Exit();
+                case "3":
+                    Exit();
                     break;
-                default: Console.WriteLine("\nWrong input!\n");
+                default:
+                    Console.WriteLine("\nWrong input! Press any key...\n");
+                    Console.ReadLine();
+                    Console.Clear();
                     Menu();
                     break;
             }
@@ -80,36 +87,71 @@
                     Console.WriteLine("Archer - 50g");
                     Console.WriteLine("Griffon - 150g");
                     Console.WriteLine("-----------------------------");
-                    GoBackToShop();
+                    Console.Write("Press any key to go back... ");
+                    Console.ReadLine();
+                    Console.Clear();
+                    VisitShop();
                     break;
-                case "2": 
+                case "2":
+                    Console.WriteLine("-----------------------------");
+                    BuyCommand();
+                    Console.WriteLine("-----------------------------");
+                    Console.Write("Press any key to go back... ");
+                    Console.ReadLine();
+                    Console.Clear();
+                    VisitShop();
                     break;
                 case "3":
                     Console.WriteLine("-----------------------------");
                     Console.WriteLine("Your gold: " + player.Gold);
                     Console.WriteLine("-----------------------------");
-                    GoBackToShop();
+                    Console.Write("Press any key to go back... ");
+                    Console.ReadLine();
+                    Console.Clear();
+                    VisitShop();
                     break;
-                case "4": Menu();
+                case "4":
+                    Console.Clear();
+                    Menu();
                     break;
-                default: Console.WriteLine("\nWrong input!\n");
+                default: Console.WriteLine("\nWrong input! Press any key to go back...\n");
+                    Console.ReadLine();
+                    Console.Clear();
                     VisitShop();
                     break;
             }
         }
 
-        private void GoBackToShop()
+        private void BuyCommand()
         {
-            Console.Write("Back ? yes/no: ");
-            var input = Console.ReadLine();
-            
-            if (input == "yes")
+            Console.WriteLine("Write what you can buy as the example:\nbuy peasant/archer/footman/griffon amount (buy griffon 10)");
+            Console.Write("\nType here: ");
+            var input = Console.ReadLine().Split(' ');
+
+            if (input[0] != "buy" || int.Parse(input[2]) <= 0)
             {
-                VisitShop();
+                Console.WriteLine("\nWrong input!");
             }
             else
             {
-                Exit();
+                switch (input[1])
+                {
+                    case "archer":
+                        shopkeeper.AddUnitToPlayer(player, new Archer(), int.Parse(input[2]));
+                        break;
+                    case "footman":
+                        shopkeeper.AddUnitToPlayer(player, new Footman(), int.Parse(input[2]));
+                        break;
+                    case "griffon":
+                        shopkeeper.AddUnitToPlayer(player, new Griffon(), int.Parse(input[2]));
+                        break;
+                    case "peasant":
+                        shopkeeper.AddUnitToPlayer(player, new Peasant(), int.Parse(input[2]));
+                        break;
+                    default:
+                        Console.WriteLine("\nWrong input!");
+                        break;
+                }
             }
         }
 
@@ -130,7 +172,7 @@
             //player1.ListUnits();
             //Console.WriteLine();
             //Console.WriteLine("gold: " + player1.Gold);
-            
+
         }
     }
 }
