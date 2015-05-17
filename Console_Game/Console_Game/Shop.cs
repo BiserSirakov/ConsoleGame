@@ -59,15 +59,6 @@
                 }
             }
 
-            //else if (unit.GetType().Name == "Hero")
-            //{
-            //    for (int i = 0; i < amountOfUnits; i++)
-            //    {
-            //        player.Gold -= 200; // One Hero costs 200 gold, it is not written in the .pdf file but I set it this way ( so a Player can have only one Hero )
-            //        player.Units.Add(new Hero(), 200);
-            //    }
-            //}
-
             else if (unit.GetType().Name == "Peasant")
             {
                 if (player.Gold - (amountOfUnits * 30) >= 0)

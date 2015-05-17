@@ -11,15 +11,8 @@
         private int stamina;
         private int critChance;
 
-        public Creature()
-        {
-            this.Damage = 0;
-            this.Defense = 0;
-            this.Health = 0;
-            this.Mana = 0;
-            this.Stamina = 0;
-            this.CritChance = 0;
-        }
+        private bool isDead;
+        private Coordinate position;
 
         public Creature(int damage, int defense, int health, int mana, int stamina, int critChance)
         {
@@ -29,6 +22,7 @@
             this.Mana = mana;
             this.Stamina = stamina;
             this.CritChance = critChance;
+            this.IsDead = false;
         }
 
         public int Damage
@@ -76,11 +70,6 @@
 
             protected set
             {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
-
                 this.health = value;
             }
         }
@@ -139,14 +128,47 @@
             }
         }
 
-        public virtual void Attack()
+        public bool IsDead
         {
+            get
+            {
+                return this.isDead;
+            }
 
+            protected set
+            {
+                this.isDead = value;
+            }
         }
-        // TODO: those two are for future implementation
-        public virtual void Move()
-        {
 
+        public Coordinate Position
+        {
+            get
+            {
+                return this.position;
+            }
+
+            protected set
+            {
+                this.position = value;
+            }
+        }
+
+        public virtual void Attack(Creature enemy)
+        {
+            enemy.Health -= this.Damage * 5 - enemy.Defense; // Overall damage
+
+            if (enemy.Health <= 0)
+            {
+                enemy.Health = 0;
+                enemy.IsDead = true;
+            }
+        }
+
+        public virtual void Move(Coordinate point)
+        {
+            this.Position.X = point.X;
+            this.Position.Y = point.Y;
         }
     }
 }

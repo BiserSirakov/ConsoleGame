@@ -3,21 +3,15 @@
     public class Archer : Creature
     {
         public Archer()
-            :base()
+            :base(10, 2, 2, 2, 2, 2)
         {
-
+            
         }
 
-        public Archer(int damage, int defense, int health, int mana, int stamina, int critChance)
-            :base(damage, defense, health, mana, stamina, critChance)
-        {
-
-        }
-
-        public override void Attack()
-        {
-            base.Attack();
-        }
+        //public override void Attack()
+        //{
+        //    base.Attack();
+        //}
         // TODO: those two are for future implementation 4
         public override void Move()
         {

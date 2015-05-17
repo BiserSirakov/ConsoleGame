@@ -3,21 +3,15 @@
     public class Griffon : Creature
     {
         public Griffon()
-            :base()
+            :base(1, 1, 1, 1, 1, 1)
         {
-
+            
         }
 
-        public Griffon(int damage, int defense, int health, int mana, int stamina, int critChance)
-            :base(damage, defense, health, mana, stamina, critChance)
-        {
-
-        }
-
-        public override void Attack()
-        {
-            base.Attack();
-        }
+        //public override void Attack()
+        //{
+        //    base.Attack();
+        //}
         // TODO: those two are for future implementation 5
         public override void Move()
         {

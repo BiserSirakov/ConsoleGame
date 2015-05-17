@@ -12,7 +12,7 @@
         public Player()
         {
             this.Gold = 300; // starting gold
-            this.units = new Dictionary<Creature, int>(); // the Player starts with no units
+            this.Units = new Dictionary<Creature, int>(); // the Player starts with no units
         }
 
         public int Gold
@@ -50,12 +50,12 @@
             foreach (var item in Units)
             {
                 Console.WriteLine("Creature: " + item.Key.GetType().Name + ", price: " + item.Value);
-                Console.WriteLine("Damage: " + item.Key.Damage);
-                Console.WriteLine("Defense: " + item.Key.Defense);
-                Console.WriteLine("Health: " + item.Key.Health);
-                Console.WriteLine("Mana: " + item.Key.Mana);
-                Console.WriteLine("Stamina: " + item.Key.Stamina);
-                Console.WriteLine("Critical Chance: " + item.Key.CritChance);
+                Console.WriteLine("DMG: " + item.Key.Damage);
+                Console.WriteLine("DEF: " + item.Key.Defense);
+                Console.WriteLine("HP:  " + item.Key.Health);
+                Console.WriteLine("MP:  " + item.Key.Mana);
+                Console.WriteLine("STA: " + item.Key.Stamina);
+                Console.WriteLine("CC:  " + item.Key.CritChance + "%");
                 Console.WriteLine();
             }
         }

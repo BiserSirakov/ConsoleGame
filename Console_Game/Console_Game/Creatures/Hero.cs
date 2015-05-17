@@ -3,21 +3,15 @@
     public class Hero : Creature
     {
         public Hero()
-            :base()
+            :base(3, 2, 1, 3, 1, 5)
         {
 
         }
 
-        public Hero(int damage, int defense, int health, int mana, int stamina, int critChance)
-            :base(damage, defense, health, mana, stamina, critChance)
-        {
-
-        }
-
-        public override void Attack()
-        {
-            base.Attack();
-        }
+        //public override void Attack()
+        //{
+        //    base.Attack();
+        //}
         // TODO: those two are for future implementation 6
         public override void Move()
         {

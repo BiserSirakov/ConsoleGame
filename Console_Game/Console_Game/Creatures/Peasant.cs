@@ -3,21 +3,15 @@
     public class Peasant : Creature
     {
         public Peasant()
-            :base()
+            :base(2, 2, 3, 1, 2, 1)
         {
 
         }
 
-        public Peasant(int damage, int defense, int health, int mana, int stamina, int critChance)
-            :base(damage, defense, health, mana, stamina, critChance)
-        {
-
-        }
-
-        public override void Attack()
-        {
-            base.Attack();
-        }
+        //public override void Attack()
+        //{
+        //    base.Attack();
+        //}
         // TODO: those two are for future implementation 2
         public override void Move()
         {

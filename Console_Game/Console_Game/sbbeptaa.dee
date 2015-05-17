@@ -223,30 +223,23 @@
 
             // Testing the different parts here
 
-            //Creature archer = new Archer();
-            //Creature footman = new Footman();
-            //Console.WriteLine(footman.IsDead);
-            //archer.Attack(footman);
-            //Console.WriteLine(footman.Health);
-            //Console.WriteLine(footman.IsDead);
-
             //Hero hero = new Hero();
             //Console.WriteLine(hero.Health);
 
             //Battlefield a = new Battlefield();
             //Console.WriteLine(a.Matrix[2,9]);
             
-            //Player player1 = new Player();
+            Player player1 = new Player();
 
-            //Creature archer1 = new Archer();
-            //Creature hero = new Hero();
+            Creature archer1 = new Archer();
+            Creature hero = new Hero();
 
-            //Shop shop = new Shop();
+            Shop shop = new Shop();
 
-            //shop.AddUnitToPlayer(player1, archer1, 2);
-            //shop.AddUnitToPlayer(player1, hero, 1);
+            shop.AddUnitToPlayer(player1, archer1, 2);
+            shop.AddUnitToPlayer(player1, hero, 1);
 
-            //player1.ListUnits();
+            player1.ListUnits();
             //Console.WriteLine();
             //Console.WriteLine("gold: " + player1.Gold);
         }

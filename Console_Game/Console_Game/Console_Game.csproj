@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Battlefield.cs" />
+    <Compile Include="Coordinate.cs" />
     <Compile Include="Creatures\Archer.cs" />
     <Compile Include="Creatures\Creature.cs" />
     <Compile Include="Creatures\Footman.cs" />
