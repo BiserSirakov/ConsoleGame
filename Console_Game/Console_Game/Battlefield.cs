@@ -25,11 +25,14 @@
         
         private void FillBattlefield()
         {
-            for (int i = 0; i < this.Matrix.GetLength(0); i++)
+            int rows = this.Matrix.GetLength(0); // rows = 10
+            int cols = this.Matrix.GetLength(1); // cols = 10
+
+            for (int row = 0; row < rows; row++)
             {
-                for (int j = 0; j < this.Matrix.GetLength(1); j++)
+                for (int col = 0; col < cols; col++)
                 {
-                    this.Matrix[i, j] = new Coordinate(i, j);
+                    this.Matrix[row, col] = new Coordinate(row, col);
                 }
             }
         }

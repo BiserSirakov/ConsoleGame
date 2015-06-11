@@ -219,7 +219,7 @@
 
         public void Run()
         {
-            //Menu();
+            Menu();
 
             // Testing the different parts here
 

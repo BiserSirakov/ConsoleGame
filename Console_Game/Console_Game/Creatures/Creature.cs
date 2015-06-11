@@ -14,7 +14,7 @@
         private bool isDead;
         private Coordinate position;
 
-        public Creature(int damage, int defense, int health, int mana, int stamina, int critChance)
+        public Creature(int damage, int defense, int health, int mana, int stamina, int critChance) // TODO: position v constructora
         {
             this.Damage = damage;
             this.Defense = defense;
@@ -22,7 +22,7 @@
             this.Mana = mana;
             this.Stamina = stamina;
             this.CritChance = critChance;
-            this.IsDead = false;
+            this.IsDead = false; // initial state
         }
 
         public int Damage
@@ -154,7 +154,7 @@
             }
         }
 
-        public virtual void Attack(Creature enemy)
+        public void Attack(Creature enemy)
         {
             enemy.Health -= this.Damage * 5 - enemy.Defense; // Overall damage
 
@@ -165,7 +165,7 @@
             }
         }
 
-        public virtual void Move(Coordinate point)
+        public void Move(Coordinate point)
         {
             this.Position.X = point.X;
             this.Position.Y = point.Y;

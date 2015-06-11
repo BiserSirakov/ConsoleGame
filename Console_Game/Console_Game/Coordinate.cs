@@ -9,8 +9,8 @@
 
         public Coordinate(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }
 
         public int X
@@ -21,6 +21,11 @@
             }
             set
             {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
                 this.x = value;
             }
         }
@@ -33,6 +38,11 @@
             }
             set
             {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
                 this.y = value;
             }
         }

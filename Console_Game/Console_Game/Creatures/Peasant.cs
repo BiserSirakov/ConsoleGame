@@ -7,15 +7,5 @@
         {
 
         }
-
-        //public override void Attack()
-        //{
-        //    base.Attack();
-        //}
-        // TODO: those two are for future implementation 2
-        public override void Move()
-        {
-            base.Move();
-        }
     }
 }
