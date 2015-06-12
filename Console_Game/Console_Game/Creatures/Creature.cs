@@ -14,7 +14,7 @@
         private bool isDead;
         private Coordinate position;
 
-        public Creature(int damage, int defense, int health, int mana, int stamina, int critChance) // TODO: position v constructora
+        public Creature(int damage, int defense, int health, int mana, int stamina, int critChance)
         {
             this.Damage = damage;
             this.Defense = defense;
@@ -23,6 +23,7 @@
             this.Stamina = stamina;
             this.CritChance = critChance;
             this.IsDead = false; // initial state
+            this.Position = new Coordinate(0, 0); // all units "are born" at position (0,0)
         }
 
         public int Damage

@@ -47,16 +47,24 @@
 
         public void ListUnits()
         {
-            foreach (var item in Units)
+            if (this.Units.Count == 0)
             {
-                Console.WriteLine("Creature: " + item.Key.GetType().Name + ", price: " + item.Value);
-                Console.WriteLine("DMG: " + item.Key.Damage);
-                Console.WriteLine("DEF: " + item.Key.Defense);
-                Console.WriteLine("HP:  " + item.Key.Health);
-                Console.WriteLine("MP:  " + item.Key.Mana);
-                Console.WriteLine("STA: " + item.Key.Stamina);
-                Console.WriteLine("CC:  " + item.Key.CritChance + "%");
-                Console.WriteLine();
+                Console.WriteLine("No units");
+            }
+            else
+            {
+                foreach (var item in Units)
+                {
+                    Console.WriteLine("Creature: " + item.Key.GetType().Name + ", price: " + item.Value);
+                    Console.WriteLine("DMG: " + item.Key.Damage);
+                    Console.WriteLine("DEF: " + item.Key.Defense);
+                    Console.WriteLine("HP:  " + item.Key.Health);
+                    Console.WriteLine("MP:  " + item.Key.Mana);
+                    Console.WriteLine("STA: " + item.Key.Stamina);
+                    Console.WriteLine("CC:  " + item.Key.CritChance + "%");
+                    Console.WriteLine("Position:  " + item.Key.Position);
+                    Console.WriteLine();
+                }
             }
         }
     }

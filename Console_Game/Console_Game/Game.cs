@@ -9,22 +9,25 @@
         private Player player;
         private Player enemy;
         private Shop shopkeeper;
+        private Battlefield battlefield;
 
         public Game()
         {
             this.shopkeeper = new Shop();
             this.player = new Player();
             this.enemy = new Player();
+            this.battlefield = new Battlefield();
         }
 
         public void Start()
         {
             Console.WriteLine("-----------------------------");
-            Console.WriteLine("1. Move unit(s)");
-            Console.WriteLine("2. Attack enemy`s unit(s)");
-            Console.WriteLine("3. Print current version of the field");
-            Console.WriteLine("4. End of turn");
-            Console.WriteLine("5. Go back to main menu");
+            Console.WriteLine("1. Print list of bought units");
+            Console.WriteLine("2. Move unit(s)");
+            Console.WriteLine("3. Attack enemy`s unit(s)");
+            Console.WriteLine("4. Print current version of the field");
+            Console.WriteLine("5. End of turn");
+            Console.WriteLine("6. Go back to main menu");
             Console.WriteLine("-----------------------------");
             Console.Write("Type here: ");
             var input = Console.ReadLine();
@@ -36,23 +39,51 @@
             switch (input)
             {
                 case "1":
-                    MoveUnits();
                     Console.WriteLine("-----------------------------");
-                    Console.Write("Press any key to go back... ");
+                    player.ListUnits();
+                    Console.WriteLine("-----------------------------");
+                    Console.Write("Press Enter to go back... ");
                     Console.ReadLine();
                     Console.Clear();
                     Start();
                     break;
                 case "2":
-                    // TODO: attack units
+                    Console.WriteLine("-----------------------------");
+                    MoveUnits();
+                    Console.WriteLine("-----------------------------");
+                    Console.Write("Press Enter to go back... ");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Start();
                     break;
                 case "3":
-                    // TODO: print field
+                    Console.WriteLine("-----------------------------");
+                    AttackUnits();
+                    Console.WriteLine("-----------------------------");
+                    Console.Write("Press Enter to go back... ");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Start();
                     break;
                 case "4":
-                    // TODO: end of turn
+                    Console.WriteLine("-----------------------------");
+                    PrintField();
+                    Console.WriteLine("-----------------------------");
+                    Console.Write("Press Enter to go back... ");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Start();
                     break;
                 case "5":
+                    Console.WriteLine("-----------------------------");
+                    EndOfTurn();
+                    Console.WriteLine("-----------------------------");
+                    Console.Write("Press Enter to go back... ");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Start();
+                    break;
+                case "6":
                     Console.Clear();
                     Menu();
                     break;
@@ -63,6 +94,23 @@
                     Start();
                     break;
             }
+        }
+
+        private void EndOfTurn()
+        {
+            // TODO: implenet end of turn
+        }
+
+        private void PrintField()
+        {
+            // TODO: print field
+        }
+
+        private void AttackUnits()
+        {
+            // TODO: implement attack
+            // move unit next to enemy <= unit.stamina
+            // unit.attack(enemy)
         }
 
         private void MoveUnits()
@@ -78,7 +126,31 @@
             }
             else
             {
-                
+                var currentPosition = input[1];
+                var currentX = int.Parse(currentPosition[1].ToString()); // from char to string and then to int
+                var currentY = int.Parse(currentPosition[3].ToString());
+                var destination = input[2];
+                var destinationX = int.Parse(destination[1].ToString());
+                var destinationY = int.Parse(destination[3].ToString());
+
+                if (destinationX >= 10 || destinationY >= 10 || destinationX < 0 || destinationY < 0)
+                {
+                    Console.WriteLine("\nYou can not move the units out of the battlefield");
+                }
+                else
+                {
+                    foreach (var unit in player.Units)
+                    {
+                        if (unit.Key.Position.X == currentX && unit.Key.Position.Y == currentY)
+                        {
+                            unit.Key.Move(new Coordinate(destinationX, destinationY));
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nThere is no unit at that coordinate");
+                        }
+                    }
+                }
             }
 
         }
@@ -145,11 +217,11 @@
                 case "1":
                     Console.WriteLine("-----------------------------");
                     Console.WriteLine("Peasant - 30g");
+                    Console.WriteLine("Archer  - 50g");
                     Console.WriteLine("Footman - 90g");
-                    Console.WriteLine("Archer - 50g");
                     Console.WriteLine("Griffon - 150g");
                     Console.WriteLine("-----------------------------");
-                    Console.Write("Press any key to go back... ");
+                    Console.Write("Press Enter to go back... ");
                     Console.ReadLine();
                     Console.Clear();
                     VisitShop();
@@ -158,7 +230,7 @@
                     Console.WriteLine("-----------------------------");
                     BuyCommand();
                     Console.WriteLine("-----------------------------");
-                    Console.Write("Press any key to go back... ");
+                    Console.Write("Press Enter to go back... ");
                     Console.ReadLine();
                     Console.Clear();
                     VisitShop();
@@ -167,7 +239,7 @@
                     Console.WriteLine("-----------------------------");
                     Console.WriteLine("Your gold: " + player.Gold);
                     Console.WriteLine("-----------------------------");
-                    Console.Write("Press any key to go back... ");
+                    Console.Write("Press Enter to go back... ");
                     Console.ReadLine();
                     Console.Clear();
                     VisitShop();
@@ -176,7 +248,7 @@
                     Console.Clear();
                     Menu();
                     break;
-                default: Console.Write("\nWrong input! Press any key to go back... ");
+                default: Console.Write("\nWrong input! Press Enter to go back... ");
                     Console.ReadLine();
                     Console.Clear();
                     VisitShop();
@@ -234,7 +306,7 @@
             //Console.WriteLine(hero.Health);
 
             //Battlefield a = new Battlefield();
-            //Console.WriteLine(a.Matrix[2,9]);
+            //Console.WriteLine(a);
             
             //Player player1 = new Player();
 
@@ -249,6 +321,7 @@
             //player1.ListUnits();
             //Console.WriteLine();
             //Console.WriteLine("gold: " + player1.Gold);
+            //Console.WriteLine(battlefield.Matrix[8, 0].X);
         }
     }
 }
